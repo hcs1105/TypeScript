@@ -1,0 +1,7 @@
+<2022.03.28>
+npm i -g typescript : TypeScript를 전역에 명령어로 설치
+VS Code 명령어 검색 : ctrl + shift + p or F1
+typescript는 패키지 이름이며 tsc는 TypeScript를 컴파일해서 JavaScript로 바꿔 주는 명령어
+예) tsc typescript-init.ts를 입력하면 typescript-init.js 파일이 생성됩니다.
+ts 파일은 브라우저에서 실행되지 않으므로 html 파일에 js 파일을 명시해야 됩니다.
+watch : tsc gugudan.ts -w		
