@@ -1,0 +1,15 @@
+<2022.03.28>
+타입스크립트는 자바스크립트의 슈퍼 셋(Superset)이며 자바스크립트에서 사용되는 변수와 함수의 매개변수, 함수의 리턴값에 명시적으로 타입이 붙은 언어.
+타입스크립트는 언어이면서 라이브러리.
+자바스크립트는 약타입 언어인데 타입 스크립트를 통하여 강타입 언어로 변경됨.
+※ 자바스크립트 실행기 : 브라우저, 노드
+※ 타입스크립트 실행기 : deno, 라이브러리
+
+<2021.08.18>
+npm init : package.json 생성
+npm i typescript : TypeScript 라이브러리 생성
+npm i -g typescript : TypeScript를 전역에 명령어로 설치
+Reveal in File Explorer : Shift + Alt + R
+명령어 검색 : ctrl + shift + p or F1
+typescript는 패키지 이름이며 tsc는 TypeScript를 JavaScript로 컴파일한다.
+watch : tsc gugudan.ts -w		
