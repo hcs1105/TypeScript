@@ -1,0 +1,6 @@
+<2022.03.28>
+zero 강사님 수업 자료 - https://github.com/ZeroCho/ts-lecture
+
+npm init : package.json 생성
+npm i typescript : TypeScript 라이브러리 생성
+Reveal in File Explorer : Shift + Alt + R
