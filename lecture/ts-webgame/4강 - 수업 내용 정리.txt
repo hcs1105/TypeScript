@@ -1,0 +1,4 @@
+<2022.03.28>
+watch : tsc gugudan.ts -w or tsc gugudan.ts --watch
+명확한 자료형은 변수에 타입을 명시하지 않아도 됩니다.
+Rename Symbol : 변수명을 변경할 때 사용되며 단춬키는 F2입니다.
