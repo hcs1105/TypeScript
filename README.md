@@ -1,0 +1,1 @@
+Space for sharing TypeScript learning materials and personal projects.
