@@ -1,0 +1,23 @@
+<2022.03.28>
+ts 파일과 js 파일이 함께 편집창에 있으면 ts 파일에 에러가 발생합니다. 이것은 tsconfig.json 파일을 통해 해결할 수 있습니다.
+컴파일러 옵션들(Complier Options) - https://www.typescriptlang.org/docs/handbook/compiler-options.html
+  --allowJs : Allow JavaScript files to be a part of your program. Use the checkJS option to get errors from these files(Default value:false).
+  --baseUrl : Specify the base directory to resolve non-relative module names.
+  --declaration : Generate .d.ts files from TypeScript and JavaScript files in your project(Default value:false).
+  --esModuleInterop : Emit additional JavaScript to ease support for importing CommonJS modules. This enables allowSyntheticDefaultImports for type compatibility(Default value:false).
+    ex) import React from 'react'; (x) -> 이런 에러를 방지하기 위해 '--esModuleInterop' 컴파일러 옵션을 사용함.
+        import * as React from 'react'; (o)
+  --init : Initializes a TypeScript project and creates a tsconfig.json file.
+  --jsx : Specify what JSX code is generated(type - preserve, react, react-native, react-jsx, or react-jsxdev).
+          리액트를 사용할 때 도움이 되며 해당 옵션을 적용할 경우, .tsx 파일이 컴파일되면 .jsx 파일로 변경됨.
+  --lib : Specify a set of bundled library declaration files that describe the target runtime environment.
+  --outDir : Specify an output folder for all emitted files.
+
+  <2022.03.29>
+  --target : Set the JavaScript language version for emitted JavaScript and include compatible library declarations(Default value:ES3).
+  --types : Specify type package names to be included without being referenced in a source file.
+  --typeRoots : Specify multiple folders that act like ./node_modules/@types.
+  --strict : Enable all strict type-checking options(Default value:false).
+    ※ 참고 : --noImplicitAny, --noImplicitReturns, --noImplicitThis, --noImplicitUseStrict 속성값이 false이면 엄격한 타입 검사가 불가능하므로 반드시 true를 설정해야 됩니다.
+  --module : Specify what module code is generated. target === "ES3" || "ES5" ? CommonJS : ES6
+  --watch : Watch input files.

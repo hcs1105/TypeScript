@@ -1,10 +1,19 @@
 {
   "compilerOptions": {
+    /*
+     * --strict 속성이 'true'이면 해당 속성들은 활성화됩니다. 그래서 해당 속성들을 주석 처리합니다.
     "noImplicitAny": true,
     "noImplicitThis": true,
+    */
     "noImplicitReturns": true,
     "strict": true,
-    "allowJs" : true,
-    "lib" : ["DOM", "ES5", "ES2016", "ES2020"]
-  }
+    "allowJs": true,
+    "lib": ["DOM", "ES5", "ES2015", "ES2016", "ES2017", "ES2018", "ES2019", "ES2020"],
+    "target": "ES2015" // ES6 = ES2015(공식 명칭), ES2016, ES2017, ES2018, ES2019, ES2020
+  },
+  /*
+  "include": ["gugudan.ts"], // 컴파일할 파일들을 적습니다.
+  "exclude": ["*.js"], // 컴파일하지 않는 파일들을 적습니다.
+  "extends": ""
+  */
 }
