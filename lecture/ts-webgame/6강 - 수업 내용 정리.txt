@@ -1,0 +1,11 @@
+<2022.03.28>
+.ts : typescript로 작성한 코드들을 모은 파일
+lib.dom.d.ts : 엘리먼트에 적용되는 타입(type)들의 정보를 명시한 파일
+  - 공통 단축키 메뉴 : Go to Type Definition
+  - VSC 단축키 : F12, 
+  - WebStorm 단축키 : Ctrl + B
+ex) interface HTMLButtonElement extends HTMLElemnent {}
+    - interface : 객체
+    - extends : 부모 객체의 속성을 상속
+    - HTMLButtonElement 객체는 HTMLElement 객체의 속성을 상속받습니다.
+엘리먼트에 적용된 속성들이 lib.dom.d.ts 파일에 있을 경우, 에디터에서 해당 엘리먼트를 입력하면 속성들이 리스트 형태로 표시됩니다.
