@@ -1,6 +1,6 @@
 <2022.03.28>
 .ts : typescript로 작성한 코드들을 모은 파일
-lib.dom.d.ts : 엘리먼트에 적용되는 타입(type)들의 정보를 명시한 파일
+lib.dom.d.ts : 엘리먼트에 적용되는 타입(type)들을 명시한 파일
   - 공통 단축키 메뉴 : Go to Type Definition
   - VSC 단축키 : F12, 
   - WebStorm 단축키 : Ctrl + B
