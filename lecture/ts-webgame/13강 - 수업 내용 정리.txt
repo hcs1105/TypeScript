@@ -1,0 +1,11 @@
+<2022.03.31>
+let array: [] = []; // 빈 베열이므로 never 타입이 발생합니다.
+
+arr.push(3); (X) // Argument of type '3' is not assignable to parameter of type 'never'. ts(2345)
+
+function chooseNumber() {
+
+}
+
+const a = chooseNumber();
+a.toString(); // Property 'toString' does not exist on type 'void'. ts(2339)
