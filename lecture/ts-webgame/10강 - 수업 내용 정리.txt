@@ -1,0 +1,35 @@
+<2022.03.30>
+let num; // 변수 num의 타입은 'any'입니다.
+
+let num : number;
+num = 'hello';(X) // Type '"hello"' is not assignable to type 'number' .ts(2322)
+let str : string = 'hello';
+
+let num : number;
+num = 3;
+let str : string = num.toString(); // toString() 메소트 : 숫자를 문자열로 변경해 주는 메소드
+같은 표현 - let str : string = String(num);
+let str : string = num;(X) // Type 'number' is not assignable to type 'string' .ts(2322)
+
+let num : Number;(X) // Number는 자바스크립트 객체이므로
+※ 자바스크립트 객체 : Number, String, Array, Object, Boolean
+
+let arr = [1, 2, 3]; // Type : number[]
+같은 표현 - let arr : number[] = [1, 2, 3]; <==> let arr : Array<number> = [1, 2, 3];
+
+let arr = ['1', '2', '3']; // Type : string[]
+
+let arr = [true, 2, '3']; // Type : (string | number | boolean)[]
+같은 표현 - let arr : (string | number | boolean)[] = [true, 2, '3'];
+let arr : (string | number | boolean)[] = [true, 2, {}];(X) // Type '{}' is not assignable to type 'string | number | boolean' .ts(2322)
+
+배열의 원소 갯수가 3이라면 다음과 같이 표현할 수 있습니다.
+let arr : [boolean, number, string] = [true, 2, '3']; // tuple , 참고로 tuple에 push하는 행위는 막지 못합니다.
+arr[1] = 5;
+let arr : [boolean, number, string] = [true, 5, '3'];
+
+숫자는 무조건 2만 표시하고 싶으면 다음과 같이 표현할 수 있습니다.
+let arr : [boolean, 2, string] = [true, 2, '3'];
+arr[1] = 5;(X) // Type '5' is not assignable to type '2' .ts(2322)
+
+arr[3] = 5;(X) // Type '5' is not assignable to type 'undefined' .ts(2322)
