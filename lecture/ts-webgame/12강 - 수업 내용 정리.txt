@@ -1,0 +1,37 @@
+<2022.03.31>
+const arr = []; // Type: any[]
+
+const arr: [] = []; Type: []
+arr.push(3); (X) // Argument of type '3' is not assignable to parameter of type 'never'
+
+※ 배열을 잘못 만들면 대부분 'never'라는 에러가 발생합니다.
+
+const arr: any = [];
+const arr: any = '5';
+const arr: any = 3;
+const arr: any = false;
+const arr: any = {};
+
+※ 다른 사람들이 만든 ts 파일에서 타입을 변경하기 곤란할 수 있으므로 이런 경우에만 'any'를 사용합니다.
+ex) d.ts
+
+const hello: numeber;
+
+import hello from 'hello';
+hello.substr(); (X)
+
+import hello from 'hello';
+const name: any = hello;
+name.substr();
+
+※ 타입을 강제로 변경할 경우, 'unknown'을 사용합니다.
+const hello: numeber;
+
+import hello from 'hello';
+(hello as unknown as string).substr(1,2); <==> (<string><unknown>hello).substr(1,2);
+
+※ 부모와 자식 타입이 겹치는 경우, 'unknown'을 사용하지 않아도 됩니다.
+const div = document.createElement('div');
+const a = div as HTMLElement;
+const a = div as number; (X)
+const a = div as unknown as number; <==><number><unknown>div (O) // Type: number
