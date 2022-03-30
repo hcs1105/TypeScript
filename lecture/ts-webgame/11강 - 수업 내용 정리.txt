@@ -1,0 +1,105 @@
+<2022.03.30>
+let arr : [boolean, 2, string] = [true, 2, '3'];
+
+// 변수의 값 타입을 상수처럼 고정으로 사용하고 싶으면 다음과 같이 표현합니다.
+let arr = [true, 2, '3'] as const; // Type : readonly [true, 2, '3']
+※ readonly는 상수이므로 수정할 수 없습니다.
+
+let str = 'hello' as const; // Type : hello
+같은 표현 - const str = 'hello';
+str = 'hi';(X) // Type '"hi"' is not assignable to type '"hello"' .ts(2322) 
+
+const obj = { a : 'b' };
+obj = 'hello';(X) // Cannot assign to 'obj' because it is a constant. 
+obj.a = 'hello';
+const obj = { a : 'hello' };
+
+const obj = { a : 'b' } as const;
+obj.a = 'hello'; // (X)
+
+const obj : object = { a : 'b' }; <==> const obj : { a : 'b' } = { a : 'b' }; <==> const obj : { a : string } = { a : 'b' };
+obj.a = 3;(X) // Type '3' is not assignable to type 'string' .ts(2322)  
+
+const obj : { a : string, b : number } = { a : 'b' }; // Property 'b' is missing in type '{ a : string;}' but reqired in type '{b : number; }' .ts(2741) 
+const obj : { a : string, b : number } = { a : 'b', b : '5' }; // Type 'string' is not assignable to type 'number' .ts(2322), The expected type comes from property 'b' which is declared here on type '{ a : string, b : number; }' 
+맞는 표현 - const obj : { a : string, b : number } = { a : 'b', b : 5 };
+
+만약에 프로퍼티 b가 있거나 없을 경우에는 다음과 같이 표현합니다.
+const obj : { a : string, b? : number } = { a : 'b', b : 5 };
+
+※ 참고 : '?'의 쓰임
+① 삼항 연산자 - const a = true ? 'b' : 'c';
+② Optional Chaining - const a = obj?.name; const b = abc.method?.();
+
+enum Color = [Red, Green, Blue];
+// Color[0] === 'Red';
+// Color['Red'] === 0;
+// Color[1] === 'Green';
+// Color['Green'] === 1;
+// Color[2] === 'Blue';
+// Color['Blue'] === 2;
+let c : Color = Color.Green;
+
+enum 변수를 ts 파일에서 js 파일로 변환하면 다음과 같습니다.
+var Color;
+(function() {
+  Color[Color["Red"] = 0] = "Red";
+  Color[Color["Green"] = 1] = "Green";
+  Color[Color["Blue"] = 2] = "Blue";
+})(Color || (Color = {}));
+var c = Color.Green;
+
+const n = null; // Type : object인데 이것은 자바스크립트의 버그이다. 그리고 타입스크립트는 null로 표시됨.
+const n = undefined; // Type : undefined
+const n = void 0; // Type : undefined
+
+※ 참고 : 함수에 리턴값이 없을 때 void가 쓰입니다.
+function add(a: number, b: number): void {
+  console.log(a + b);
+}
+
+// 에러가 발생한 경우 : A function whose declared type is neither 'void' nor 'any' must return a value.
+function add(a: number, b: number): undefined {
+  console.log(a + b);
+}
+
+// 함수에 리턴값이 존재하는 경우
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+// 타입스크립트의 단점 : 고차 함수(함수가 다른 함수를 리턴하는 함수)가 존재하는 경우
+function add(a: number, b: number): (c: string) => number {
+  return (c: string) => {
+    return 3;
+  };
+}
+
+function add(a: number, b: number): (c: string) => (d: string) => boolean {
+  return (c: string) => {
+    return (d: string) => {
+      retutn false;
+    };
+  };
+}
+
+const obj : {a: (b?: number) => string } = {
+  a(b?: number) {
+    return 'hello';
+  }
+};
+
+obj.a(); // hello
+obj.a(3); // hello
+
+const obj : {a: (b: number, c?: string) => string } = {
+  a(b: number, c?: string) {
+    return 'hello';
+  }
+};
+
+obj.a(); // (X)
+obj.a(3); // hello
+obj.a(3, 'hello); // hello
+
+※ 오버로딩 : 매개변수가 쓰이거나 안 쓰이는 경우이며 자바스크립트에 없는 개념입니다.
