@@ -7,7 +7,6 @@
     */
     "noImplicitReturns": true,
     "strict": true,
-    "allowJs": true,
     "lib": ["DOM", "ES5", "ES2015", "ES2016", "ES2017", "ES2018", "ES2019", "ES2020"],
     "target": "ES2015" // ES6 = ES2015(공식 명칭), ES2016, ES2017, ES2018, ES2019, ES2020
   },
