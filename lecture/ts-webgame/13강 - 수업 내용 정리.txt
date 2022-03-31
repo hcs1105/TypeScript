@@ -9,3 +9,37 @@ function chooseNumber() {
 
 const a = chooseNumber();
 a.toString(); // Property 'toString' does not exist on type 'void'. ts(2339)
+
+lib.dom.d.ts 파일은 내가 직접 타입(type)을 만들 때 보는 것이 좋습니다.
+다른 사람이 만든 변수에 타입을 붙이지 마세요. 왜냐하면, 내용이 변경되서 업데이트되기 때문입니다.
+
+interface hello1 { 
+  a : string,
+  b? : number
+}
+
+interface helloChild extends hello {
+  c? : boolean
+}
+
+type hello2 = {
+  a : string,
+  b? : number 
+}
+
+type stringOrNumber = string | number;
+
+const hi1 : hello1 = {
+  a :'b'
+}
+
+const hi2 : hello2 = {
+  a :'b'
+}
+
+const hi3 : stringOrNumber = {
+  a :'b'
+}
+
+※ 객체는 보통 interface로 표현합니다.
+※ 중복을 제거하기 위해 interface로 표현된 객체는 상속에도 쓰입니다.
