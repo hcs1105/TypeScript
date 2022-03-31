@@ -1,0 +1,26 @@
+<2022.03.31>
+function a(b? : string) {
+  
+}
+
+a();
+a('hello');
+
+내가 만든 변수와 함수의 매개 변수, 리턴값에는 타입을 적고 남이 만든 것은 타입을 적지 마세요.
+
+interface hello1 { 
+  a : string,
+  b? : number
+}
+
+const hi1 : hello1 = { 
+  a :'b' 
+} as const;
+
+function test(a? : string, b? : number) {
+
+}
+
+test('',2); // 두 번째 매개변수만 호출할 경우
+
+※ 참고 : 자바스크립트는 공식적으로 오버로딩이 되지 않습니다.
