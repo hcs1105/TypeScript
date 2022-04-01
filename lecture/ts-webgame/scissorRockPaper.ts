@@ -11,7 +11,7 @@ const rsp : RSP = {
   scissors : '0', // 가위의 X 좌표
   rock : '-147px', // 바위의 X 좌표
   paper : '-294px' // 보의 X 좌표
-};
+} as const;
 
 const score = {
   scissors : 1, 
@@ -27,7 +27,7 @@ document.querySelectorAll('button').forEach(btn => {
   btn.addEventListener('click', function(){
     const myChoice = this.textContent;
     const myScore = score[myChoice];
-    const computerScore = score[computerChoice(imgCoords)];
+    const computerScore = score[computerChoice()];
     const diff = myScore - computerScore;
     if(diff === 0) {
       console.log('비겼습니다.');

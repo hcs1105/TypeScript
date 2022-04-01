@@ -16,7 +16,7 @@ document.querySelectorAll('button').forEach(function (btn) {
     btn.addEventListener('click', function () {
         var myChoice = this.textContent;
         var myScore = score[myChoice];
-        var computerScore = score[computerChoice(imgCoords)];
+        var computerScore = score[computerChoice()];
         var diff = myScore - computerScore;
         if (diff === 0) {
             console.log('비겼습니다.');
