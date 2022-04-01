@@ -1,4 +1,5 @@
-var imgCoords = 0;
+var imgCoords = '0';
+;
 var rsp = {
     scissors: '0',
     rock: '-147px',

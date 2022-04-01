@@ -1,0 +1,104 @@
+<2022.04.01>
+
+※ 인터페이스는 서로 간에 속성을 상속할 수 있습니다.
+
+interface RSP {
+  readonly scissors : string, 
+  readonly rock : string, 
+  readonly paper : string 
+};
+
+interface Example extends RSP { // Example 인터페이스는 RSP 인터페이스의 속성을 상속받습니다.
+
+};
+
+const rsp : RSP = {
+  scissors : '0', // 가위의 X 좌표
+  rock : '-147px', // 바위의 X 좌표
+  paper : '-294px' // 보의 X 좌표
+};
+
+※ 다른 사람이 만든 인터페이스를 수정ㆍ추가하고 싶다면, 같은 이름의 인터페이스를 여러 개 만들 수 있습니다.
+※ 여러 개로 쪼개진 인터페이스를 같은 이름을 가진 하나의 인터페이스로 합칠 수 있습니다.
+
+interface RSP { // 다른 사람이 만든 인터페이스
+  readonly scissors : string
+};
+
+interface RSP { // 내가 만든 인터페이스
+  readonly rock : string, 
+  readonly paper : string 
+};
+
+interface RSP { // 내가 만든 인터페이스
+  hello : '1',  
+};
+
+const rsp : RSP = {
+  scissors : '0', // 가위의 X 좌표
+  rock : '-147px', // 바위의 X 좌표
+  paper : '-294px', // 보의 X 좌표
+  hello : '1'
+};
+
+※ 타입은 같은 이름의 타입을 여러 개 만들 수 없습니다(Duplicate identifier 'RSP'. ts(2300)).
+
+type RSP  = { // 다른 사람이 만든 인터페이스
+  readonly scissors : string
+};
+
+type RSP = { // 내가 만든 인터페이스
+  readonly rock : string, 
+  readonly paper : string 
+};
+
+※ 인터페이스와 타입 엘리어스의 차이
+    - 인터페이스 : 객체에 많이 사용
+    - 타입 엘리어스 : 객체와 커스텀 타입, 문자영 등에 사용
+
+    type hello = string | number;
+    type Hello = {
+      scissors : 1, 
+      rock : 0, 
+      paper : -1 
+    };
+    type Hello = {
+      scissors : 1, 
+      rock : 0, 
+      paper : -1 
+    } | string;
+
+    const h1 : Hello = 'hello';
+    const h1 : Hello = {
+      rock : 'a',
+      paper : 'b'
+    };
+
+※ 속성의 중복을 막으려면 keyof를 이용해야 됩니다.
+
+interface RSP {
+  readonly scissors : string, 
+  readonly rock : string, 
+  readonly paper : string 
+};
+
+function computerChoice(imgCoords) : 'scissors' | 'rock' | 'paper' {
+  return Object.keys(rsp).find((k) => rsp[k] === imgCoords);
+}
+
+function computerChoice(imgCoords) : keyof RSP {
+  return Object.keys(rsp).find((k) => rsp[k] === imgCoords);
+}
+
+※ 인터페이스에 어떤 속성이 들어올지 모른다면 다음과 같이 표현됩니다.
+interface Example {
+  a : 3,
+  b : 7,
+  [key : string] : number
+};
+
+const example : Example = {
+  a : 3,
+  b : 7,
+  d : 100,
+};

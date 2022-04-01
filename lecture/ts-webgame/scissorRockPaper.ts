@@ -1,17 +1,16 @@
-
-let imgCoords = 0;
+let imgCoords = '0';
 
 interface RSP {
-  readonly scissors : string, 
-  readonly rock : string, 
-  readonly paper : string 
-}
+  readonly scissors : '0', 
+  readonly rock : '-147px', 
+  readonly paper : '-294px', 
+};
 
 const rsp : RSP = {
   scissors : '0', // 가위의 X 좌표
   rock : '-147px', // 바위의 X 좌표
   paper : '-294px' // 보의 X 좌표
-} as const;
+};
 
 const score = {
   scissors : 1, 
@@ -19,7 +18,7 @@ const score = {
   paper : -1 
 } as const;
 
-function computerChoice(imgCoords) : 'scissors' | 'rock' | 'paper' {
+function computerChoice(imgCoords : RSP[keyof RSP]) : keyof RSP {
   return Object.keys(rsp).find((k) => rsp[k] === imgCoords);
 }
 
