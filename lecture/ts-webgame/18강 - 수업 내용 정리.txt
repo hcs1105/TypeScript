@@ -1,0 +1,23 @@
+<2022.04.02>
+
+※ this.textContent의 값은 'string | null'입니다.
+※ 작업할 때 변수의 타입 범위를 줄이는 것이 중요합니다.
+※ 매개변수의 경우, 타입 범위가 좁은 곳에서 넓은 곳으로 들어가는 것은 가능합니다.
+
+let imgCoords : RSP[keyof RSP] = '0'; // 타입 범위가 좁은 곳
+
+const rsp : RSP = {
+  scissors : '0', // 가위의 X 좌표
+  rock : '-147px', // 바위의 X 좌표
+  paper : '-294px' // 보의 X 좌표
+};
+
+function computerChoice(imgCoords : RSP[keyof RSP]) : keyof RSP { // 타입 범위가 좁은 곳
+  return (Object.keys(rsp) as ['scissors', 'rock', 'paper']).find((k) => rsp[k] === imgCoords)!;
+}
+
+function computerChoice(imgCoords : string) : keyof RSP { // 타입 범위가 넓은 곳
+  return (Object.keys(rsp) as ['scissors', 'rock', 'paper']).find((k) => rsp[k] === imgCoords)!;
+}
+
+※ tsc가 tsconfig.json을 인식하지 못할 경우에 npx tsc -w 명령어를 입력하면 해당 이슈가 해결됩니다.

@@ -1,24 +1,25 @@
-var imgCoords = '0';
+"use strict";
+let imgCoords = '0';
 ;
-var rsp = {
+const rsp = {
     scissors: '0',
     rock: '-147px',
     paper: '-294px' // 보의 X 좌표
 };
-var score = {
+const score = {
     scissors: 1,
     rock: 0,
     paper: -1
 };
 function computerChoice(imgCoords) {
-    return Object.keys(rsp).find(function (k) { return rsp[k] === imgCoords; });
+    return Object.keys(rsp).find((k) => rsp[k] === imgCoords);
 }
-document.querySelectorAll('button').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-        var myChoice = this.textContent;
-        var myScore = score[myChoice];
-        var computerScore = score[computerChoice()];
-        var diff = myScore - computerScore;
+document.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+        const myChoice = this.textContent;
+        const myScore = score[myChoice];
+        const computerScore = score[computerChoice(imgCoords)]; // computerChoice(imgCoords)의 리턴값 : keyof RSP
+        const diff = myScore - computerScore;
         if (diff === 0) {
             console.log('비겼습니다.');
         }

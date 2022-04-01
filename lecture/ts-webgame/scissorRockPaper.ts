@@ -1,4 +1,4 @@
-let imgCoords = '0';
+let imgCoords : RSP[keyof RSP] = '0';
 
 interface RSP {
   readonly scissors : '0', 
@@ -23,10 +23,10 @@ function computerChoice(imgCoords : RSP[keyof RSP]) : keyof RSP {
 }
 
 document.querySelectorAll('button').forEach(btn => {
-  btn.addEventListener('click', function(){
-    const myChoice = this.textContent;
+  btn.addEventListener('click', function(this : HTMLButtonElement, e : Event){
+    const myChoice = this.textContent as keyof RSP;
     const myScore = score[myChoice];
-    const computerScore = score[computerChoice()];
+    const computerScore = score[computerChoice(imgCoords)]; // computerChoice(imgCoords)의 리턴값 : keyof RSP
     const diff = myScore - computerScore;
     if(diff === 0) {
       console.log('비겼습니다.');
