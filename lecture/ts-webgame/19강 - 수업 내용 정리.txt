@@ -1,0 +1,15 @@
+<2022.04.02>
+
+※ 자기가 만든 변수에는 타입을 넣어 주세요.
+※ 느낌표(!)를 막으려면 if문을 사용하새요.
+※ 타입스크립트는 HTML 코드를 인식하지 못하므로 null일 가능성이 있습니다.
+※ Element 인터페이스는 스타일 속성이 없지만 HTMLDivElement 인터페이스는 스타일 속성이 있습니다.
+※ 제너릭 에러를 해결하는 방법은 다음과 같습니다.
+
+const computer = document.querySelector<HTMLDivElement>('#computer');
+if(computer) {
+  computer.style.background = `url(images/srp.png) ${imgCoords} 0`;
+}
+
+※ 타입스크립트는 문자열을 정확히 인식하지 못합니다.
+※ 타입스크립트는 타입 여부만 체크합니다.
