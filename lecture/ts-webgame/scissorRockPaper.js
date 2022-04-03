@@ -12,14 +12,14 @@ const score = {
     paper: -1 // 보의 점수
 };
 let interval;
-let point;
+let point = 0;
 function computerChoice(imgCoords) {
     return Object.keys(rsp).find((k) => rsp[k] === imgCoords);
 }
 document.querySelectorAll('button').forEach(btn => {
     btn.addEventListener('click', function (e) {
         clearInterval(interval);
-        setInterval(intervalMaker, 2000);
+        setTimeout(intervalMaker, 2000);
         const myChoice = this.id;
         const myScore = score[myChoice];
         const computerScore = score[computerChoice(imgCoords)]; // computerChoice(imgCoords)의 리턴값 : keyof RSP
@@ -35,7 +35,7 @@ document.querySelectorAll('button').forEach(btn => {
             console.log('졌습니다.');
             point--;
         }
-        document.querySelector('#point').textContent = point;
+        document.querySelector('#point').textContent = String(point);
     });
 });
 function intervalMaker() {

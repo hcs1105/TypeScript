@@ -19,7 +19,7 @@ const score = {
 } as const;
 
 let interval: number;
-let point: number;
+let point: number = 0;
 
 function computerChoice(imgCoords : RSP[keyof RSP]) : keyof RSP {
   return (Object.keys(rsp) as ['scissors', 'rock', 'paper']).find((k) => rsp[k] === imgCoords)!;
@@ -28,7 +28,7 @@ function computerChoice(imgCoords : RSP[keyof RSP]) : keyof RSP {
 document.querySelectorAll('button').forEach(btn => {
   btn.addEventListener('click', function(this : HTMLButtonElement, e : Event){
     clearInterval(interval);
-    setInterval(intervalMaker, 2000);
+    setTimeout(intervalMaker, 2000);
 
     const myChoice = this.id as keyof RSP;
     const myScore = score[myChoice];
@@ -43,7 +43,7 @@ document.querySelectorAll('button').forEach(btn => {
       console.log('졌습니다.');
       point--;
     }
-    document.querySelector('#point').textContent = point;
+    (document.querySelector('#point') as HTMLDivElement).textContent = String(point);
   });
 });
 
