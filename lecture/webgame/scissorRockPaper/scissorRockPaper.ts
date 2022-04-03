@@ -57,7 +57,7 @@ function intervalMaker() {
       imgCoords = rsp.scissors;
     }
     if(document.querySelector('#computer')) {
-      (document.querySelector('#computer') as HTMLDivElement).style.background = `url(images/srp.png) ${imgCoords} 0`;
+      (document.querySelector('#computer') as HTMLDivElement).style.background = `url(../images/srp.png) ${imgCoords} 0`;
     }
   }, 100);  
 }
