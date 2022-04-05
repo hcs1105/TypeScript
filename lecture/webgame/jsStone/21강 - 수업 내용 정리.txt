@@ -1,0 +1,51 @@
+<2022.04.05>
+
+1. 클래스는 인터페이스보다 확장형 혹은 심화된 객체입니다. 
+2. 두 객체의 상태가 비슷할 때는 하나의 인터페이스로 묶을 수 있습니다.
+3. 인터페이스는 I를 앞에 붙여서 ICard처럼 이름 짓기도 합니다.
+4. 타입을 보고 프로그램의 구조를 이해할 수 있습니다.
+5. tsconfig.json 파일에서 strict가 true이면 strictNullChecks도 true입니다.
+6. strictNullChecks가 true이면 undefined과 null를 구분합니다.
+
+interface Player {
+  hero : HTMLDivElement,
+  deck : HTMLDivElement, // 카드들이 쌓여 있는 것을 'deck'이라고 합니다.
+  field : HTMLDivElement,
+  cost : HTMLDivElement,
+  deckData : Card[],
+  heroData? : Card, // strictNullChecks가 true이면 null을 적을 수 없습니다(Card | undefined). 
+  fieldData : Card[],
+  chosenCard? : HTMLDivElement,
+  chosenCardData? : Card
+}
+
+그래서 null를 쓰고 싶다면 다음과 같이 표기합니다.
+
+interface Player {
+  hero : HTMLDivElement,
+  deck : HTMLDivElement, // 카드들이 쌓여 있는 것을 'deck'이라고 합니다.
+  field : HTMLDivElement,
+  cost : HTMLDivElement,
+  deckData : Card[],
+  heroData : Card | null,
+  fieldData : Card[],
+  chosenCard : HTMLDivElement | null,
+  chosenCardData : Card | null
+}
+
+7. 한편, strictNullChecks가 false이면 undefined과 null를 구분하지 않습니다. 그래서 다음과 같이 표기합니다.
+   참고로 '?'는 있어도 되고 없어도 된다는 의미입니다. 즉, 있으면 Card이고 없으면 undefined입니다.
+
+interface Player {
+  hero : HTMLDivElement,
+  deck : HTMLDivElement, // 카드들이 쌓여 있는 것을 'deck'이라고 합니다.
+  field : HTMLDivElement,
+  cost : HTMLDivElement,
+  deckData : Card[],
+  heroData? : Card, // Card | null | undefined
+  fieldData : Card[],
+  chosenCard? : HTMLDivElement,
+  chosenCardData? : Card
+}
+
+8. 빈 값을 의도적으로 표시하기 위해 null를 씁니다.

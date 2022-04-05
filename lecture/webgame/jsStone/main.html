@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>타입스크립트로 자스스톤 만들기</title>
+  <style>
+    #my, #rival {
+        min-width:500px;
+        margin-right:50px;
+        display:inline-block;
+        vertical-align:top;
+    }
+    .turn {
+        border:1px solid #00f;
+    }
+    #rival {
+        vertical-align:bottom;
+    }
+    #my-deck, #rival-deck {
+        width:300px;  
+        display:inline-block;
+        background:#c0c0c0;
+        vertical-align:top;
+    }
+    #rival-deck, #rival-hero, #rival-cards, #my-cards, #my-deck, #my-hero {
+        text-align:center;
+    }
+    .card {
+        width:75px;
+        height:120px;
+        border:1px solid #000;
+        margin-bottom:10px;
+        display:inline-block;
+        position:relative;
+        background:#fff;
+        user-select:none;
+    }
+    .card-name {
+        font-size:14px;
+        text-align:center;
+    }
+    .card-att, .card-hp, .card-cost {
+        width:30px;
+        height:30px;
+        border:1px solid #000;
+        border-radius:50%;
+        display:inline-block;
+        position:absolute;
+        bottom:0;
+        font-size:16px;
+        font-weight:700;
+        text-align:center;
+        line-height:30px;
+    }
+    .card-cost {
+        bottom:auto;
+        top:0;
+        left:0;
+        background:#00f;
+        color:#fff;
+    }
+    .card-att {
+        left:0;
+        background:#ff0;
+    }
+    .card-hp {
+        right:0;
+        background:#f00;
+        color:#fff;
+    }
+    .card-hidden {
+        display:none;
+    }
+    .card-selected {
+        border:2px solid #f00;
+    }
+    .card-turnover {
+        background:#808080;
+    }
+    #turn-btn {
+        float:right;
+        position:relative;
+        top:-23px;
+    }
+</style>
+</head>
+<body>
+  <div id="rival">
+    <p>코스트: <span id="rival-cost">10</span>/<span>10</span></p>
+    <div id="rival-hero"></div>
+    <div id="rival-cards" style="height:150px;"></div>  
+  </div>
+  <div id="rival-deck">
+    <p>덱</p>
+  </div>
+  <hr />
+  <button type="button" id="turn-btn">턴넘기기</button>
+  <div id="my" class="turn">
+    <div id="my-cards" style="height:150px;"></div>
+    <div id="my-hero"></div>
+    <p>코스트: <span id="my-cost">10</span>/<span>10</span></p>
+  </div>
+  <div id="my-deck">
+    <p>덱</p>
+  </div>
+  <div class="card-hidden">
+    <div class="card">
+        <div class="card-cost"></div>
+        <div class="card-att"></div>
+        <div class="card-hp"></div>
+    </div>
+  </div>
+  <p>빨강이 체력, 노랑이 공격력, 적 영웅의 체력이 0이 되면 승리! 영웅을 보호하기 위해 쫄병들을 코스트(파란색) 내에서 뽑을 수 있음</p>
+  <script src="jsStone.js"></script>
+</body>
+</html>
