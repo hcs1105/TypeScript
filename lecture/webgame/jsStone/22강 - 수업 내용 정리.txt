@@ -1,0 +1,45 @@
+<2022.04.05>
+
+1. interface Card { // 클래스를 new로 찍어낸 객체임.
+  att : number,
+  health : number,
+  cost : number
+}
+
+2. new Card(); // 여러 개의 카드를 생성할 수 없습니다.
+
+3. 인터페이스도 이런 식으로 클래스 표현이 가능합니다.
+
+interface Card {
+  new (mine: boolean);
+}
+
+4. public와 protected, private의 차이점
+
+public : 클래스 내부와 인스턴스, 상속받는 자식들이 접근할 수 있습니다.
+protected : 클래스 내부와 상속받는 자식들이 접근할 수 있습니다. 즉, 자식한테는 공개하지만 부모한테는 공개하지 않습니다.
+private : 클래스 내부에서만 접근할 수 있습니다.
+
+5. 클래스에서 처음에 private로 시작하다가 문제가 생기면 한 단계씩 올려 주세요.
+
+6. implements는 실제 클래스가 필요 없을 때 사용합니다.
+
+7. 인터페이스를 타입 엘리어스로 변경하여 사용할 수 있습니다.
+
+interface ICard {
+  att? : number;
+  hp? : number;
+  cost? : number;
+}
+
+type ICard = {
+  att? : number;
+  hp? : number;
+  cost? : number;
+}
+
+8. class가 interface를 implements할 경우, public와 protected, private를 쓰는 것은 말이 되지 않습니다.
+
+9. class에 public이 있다면, interface를 쓰기도 합니다.
+
+10. 클래스 자체는 new를 통해 뭔가를 찍어내는 공장이고
