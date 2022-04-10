@@ -22,6 +22,7 @@ class Card implements ICard{
 }
 
 new Card(true, false);
+
 class Hero extends Card {
   private hero : boolean;
   private field : boolean;
