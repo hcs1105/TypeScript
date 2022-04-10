@@ -1,0 +1,54 @@
+<2022.04.10>
+
+1. Card : 조상, Hero : 영웅, Sub : 군사
+
+2. Card가 인터페이스라서 implements를 썼습니다.
+
+3. 실제로 사용하면 클래스(Class), 구현만 하면 인터페이스(interface)
+
+4. 인터페이스(interface)는 객체뿐만 아니라 다른 곳에서도 쓰입니다.
+
+interface Example {
+  (a:number, b:number) : number // 함수 모양
+}
+
+const ex: Example = (a, b) => a + b;
+
+interface Example {
+  new (a:number, b:number) : number // 클래스
+}
+
+interface Example {
+  add (a:number, b:number) => number // 함수 모양
+}
+
+const ex:Example = {
+  /*
+  add(a, b) {
+    return a + b;
+  }
+  */
+
+  add : (a, b) => {
+    return a + b;
+  }
+};
+
+5. 제네릭은 한 단어로 표현하면 '짝 맞추기'입니다. 즉, 인터페이스를 사용할 때, 타입을 정하는 것입니다.
+
+interface obj<T> {
+  add : (a: T, b: T) => T
+}
+
+const a : obj<number> = {
+  add : (a, b) => a + b
+};
+
+const b : obj<string> = {
+  add : (a, b) => a + b
+};
+
+a.add(1, 2);
+a.add('a' , 'b'); // Argument of type 'string' is not assignable to parameter of 'number'. ts(2345)
+b.add('a', 'b');
+b.add(1, 2); // Argument of type 'number' is not assignable to parameter of 'string'. ts(2345)

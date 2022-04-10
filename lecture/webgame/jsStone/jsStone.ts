@@ -1,37 +1,38 @@
-interface ICard {
-  att? : number;
-  hp? : number;
+interface Card {
+  att : number;
+  hp : number;
+  mine : boolean;
+  field : boolean;
+  cost? : number;
+  hero? : boolean;
 }
 
-class Card implements ICard{
-  public att? : number; // number | undefined
-  public hp? : number;
-  private cost? : number;
-  private mine? : boolean;
-  constructor(hero:boolean, mine:boolean) {
-    if(hero) {
-      return new Hero(mine);
-    } else {
-      this.att = Math.ceil(Math.random() * 5);
-      this.hp = Math.ceil(Math.random() * 5);
-      this.cost = Math.floor((this.att + this.hp) / 2);
-    } if(mine) {
-      this.mine = true;
-    }
-  }
-}
-
-new Card(true, false);
-
-class Hero extends Card {
-  private hero : boolean;
-  private field : boolean;
+class Hero implements Card {
+  public att : number; // number / undefined
+  public hp : number; // number / undefined
+  public hero : boolean;
+  public field : true;
+  public mine : boolean;
   constructor(mine:boolean) {
-    super(true, true);
+    this.mine = mine;
     this.att = Math.ceil(Math.random() * 2);
     this.hp = Math.ceil(Math.random() * 5) + 25;
     this.hero = true;
     this.field = true;
+  }
+}
+
+class Sub implements Card {
+  public att : number; // number | undefined
+  public hp : number;
+  public field : boolean = false;
+  public mine : boolean;
+  public cost : number;
+  constructor(mine:boolean) {
+    this.mine = mine;
+    this.att = Math.ceil(Math.random() * 5);
+    this.hp = Math.ceil(Math.random() * 5);
+    this.cost = Math.floor((this.att + this.hp) / 2);
   }
 }
 
