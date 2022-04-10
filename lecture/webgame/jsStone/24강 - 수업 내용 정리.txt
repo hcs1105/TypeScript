@@ -1,0 +1,46 @@
+<2022.04.10>
+
+1. 제네릭에서 extends는 타입을 제한할 때 사용합니다.
+
+interface obj<T extends string> {
+  add : (a: T, b: T) => T
+}
+
+const a : obj<number> = { // Type 'number' does not satisfy the constraint 'string' .ts(2344)
+  add : (a, b) => a + b
+};
+
+const b : obj<string> = {
+  add : (a, b) => a + b
+};
+
+a.add(1, 2);
+a.add('a' , 'b'); // Argument of type 'string' is not assignable to parameter of 'number'. ts(2345)
+b.add('a', 'b');
+b.add(1, 2); // Argument of type 'number' is not assignable to parameter of 'string'. ts(2345)
+
+2. 제네릭을 선언할 때 타입의 범위를 넓게, 사용할 때는 구체적으로
+
+function forEach<T>(arr : T[], callback: (item: T) => void) : void {
+  for(let i : number = 0; i < arr.length; i++) {
+    callback(arr[i]);
+  }
+}
+
+forEach<number>([1, 2, 3], (item) => {
+  
+});
+
+※ 배열을 선언할 때 다음과 같이 표현할 수 있습니다.
+
+function forEach<T>(arr : Array<T>, callback: (item: T) => void) : void {
+  for(let i : number = 0; i < arr.length; i++) {
+    callback(arr[i]);
+  }
+}
+
+3. true 혹은 false를 반환하는 함수일 때, 제네릭에 predicate를 사용합니다.
+
+4. 타입 추론은 거의 제네릭으로 되어 있습니다.
+
+5. 빈 배열을 선언하면 타입은 'never'입니다.
