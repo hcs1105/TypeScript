@@ -1,8 +1,8 @@
 "use strict";
 // @ts-nocheck
-const numberOne = Math.ceil(Math.random() * 9);
-const numberTwo = Math.ceil(Math.random() * 9);
-const result = numberOne * numberTwo;
+let numberOne = Math.ceil(Math.random() * 9);
+let numberTwo = Math.ceil(Math.random() * 9);
+let result = numberOne * numberTwo;
 const word = document.createElement('div'); // HTMLDivElement
 word.textContent = `${numberOne} 곱하기 ${numberTwo}`;
 document.body.append(word); // HTMLElement
