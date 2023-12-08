@@ -20,5 +20,5 @@ npx를 사용할 경우
  - 타입스크립트의 프로젝트 버전과 명령어 버전이 동기화됩니다.
 
 package.json : 설치된 라이브러리들의 버전 범위를 명시한 파일
-package-lock.json : 설치된 라이브러리들의 정확한 버전을 명시한 
+package-lock.json : 설치된 라이브러리들의 정확한 버전을 명시한 파일
 그래서 깃허브(Github)에 package.json 파일과 package-lock.json 파일을 반드시 올려야 합니다.
